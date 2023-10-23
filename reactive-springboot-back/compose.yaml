@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'mlm_database'
+    environment:
+      - 'POSTGRES_DB=prospect_mlm_db'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=springboot'
+    ports:
+      - '5432:5432'
+    volumes:
+      - './init.sql:/docker-entrypoint-initdb.d/init.sql'

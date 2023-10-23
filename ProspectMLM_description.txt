@@ -1,0 +1,101 @@
+#Description des fonctionnalités du logiciel
+
+ProspectMLM est une application qui permet de programmer la prospection et le suivit des future partenaires dans le Business du Marketing relationnel. 
+
+## Les exigences fonctionnels: 
+ProspectMLM va pouvoir faire: 
+- l'enregistrement de nouveau propest en fonction du cercle d'influence ( CI ):
+	- Un prospect appartient à l'un des CI suivants: 
+		- Family
+		- Friends
+		- Others
+	- une Personne est caractérisé par : 
+		- nom
+		- prénom
+		- telephone
+		- Email
+		- activité
+		- centre d'interet
+		- description
+		- Son adresse qui est caractérisé par: 
+			- Nationnalité
+			- Pays de residence
+			- ville de residence
+	- un utilisateur herite de personne et est caractérisé par : 
+		- userName 
+		- password 
+		- Role 
+	- un prospect hérite de personne et est caractérisé par: 
+		- le CI 
+		- nombre de prospection one to one 
+		- nombre de prospection Home meeting
+		- nombre de prospection en Salle 
+		- nombre de propection en ligne 
+		- est convertie 
+		- UserName
+- programmer les séances de prospection:
+	- les types de prospections sont les suivants : 
+		- One to one 
+		- Home meeting 
+		- Conférence en salle
+		- conférence en ligne
+	- une propection est constitué de :
+		- date 
+		- Type de prospection 
+		- le prospect concerné
+		- est première prospection
+		- est validé
+		- date validation
+		- userName
+	- apres chaque type de prospection éffectué sur un prospect, le system 
+	doit mentionner l'état valider, suivi du nombre de fois que ceux type de
+	prospections à été éffectué sur ce prospect.
+
+- Après la validation d'une première prospections (quelques soit le type), 
+si le prospect n'est pas converti, deux jours après le system doit notifier le premier suivit du prospect l'utilisateur:
+	- si après le 1er suivit, le prospect n'est toujours pas convertie,
+	le systeme doit notifier le deuxième suivit du prospect après 3 jours du
+	premier suivit validé. 
+	- si après le deuxième suivit, le prospect n'est toujours pas convertie, 
+	le systeme doit notifier le troisième suivit du prospect après 6 jours du
+	deuxième suivit validé. 
+	- si après le troisième suivit, le prospect n'est toujours pas convertie, 
+	le systeme doit notifier le prochain suivit du prospect après 12 jours 
+	3 fois tant que le prospect n'est toujours pas convertie
+	- Et tant que le prospect n'est toujours pas convertie le système notifie
+	le prochain suivit tous les 30jours. 
+	- Le prospect peut etre convertie à tout moment dans la processus de 
+	prospections. Et dès lors que c'est fait toutes les notifications s'arrete 
+	et le prospect disparait de la liste des prospects pour apparaitre dans 
+	la liste des partenaires.
+	
+	- le suivit est caractérisé par: 
+		- le nombre 
+		- le prospect concerné 
+		- la date de validation
+		- la date du prochain suivit
+		- est validé
+		- userName
+		
+	- la notification est caractérisé par: 
+		- message
+		- date publication
+		- userName
+	
+- le système doit ressortir un etat graphique représentant le taux de prospections classé par type et le taux de conversion pendant une période donnée.
+- le systeme doit avoir un role Administrateur qui a accès à l'activité de tous les utilisateurs
+- le systeme doit permetre aux utilisateurs de parametrer les comptes
+
+## Les exigences techniques: 
+- Spring security pour la gestion des authentification 
+- GraalVM pour serveur linux et spring webflux pour rendre l'execution du logiciel
+rapide et reactive
+- Base de donnée sur posgresql 
+- spring R2DBC pour codé la réactivité au niveau de la data
+- ReactJs et Thymeleaf pour codé la partie front-end coté serveur 
+- Spring Boot pour codé la partie back-end
+- flutter pour codé la partie front-end coté client
+- Development de l'application piloté par des tests ( TDD ) 
+- Architecture Monolith
+- Programation orienté fonction
+
